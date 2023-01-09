@@ -33,6 +33,7 @@ import {IRootStore} from 'Store'
 import tw from 'tailwind'
 import {systemPreferenceItems} from './systemPreferences'
 import {v4 as uuidv4} from 'uuid'
+import {spotifyToggleRepeatScript} from 'lib/spotify'
 
 const chance = new Chance()
 const gf = new GiphyFetch('Ot4kWfqWddVroUVh73v4Apocs8Dek86j')
@@ -668,6 +669,20 @@ export const createUIStore = (root: IRootStore) => {
         const paragraph = chance.paragraph()
         solNative.pasteToFrontmostApp(paragraph)
         solNative.showToast('✅ Generated')
+      },
+    },
+    {
+      icon: '✳️',
+      type: ItemType.CONFIGURATION,
+      name: 'Spotify Toggle Repeat',
+      callback: async () => {
+        try {
+          const script = spotifyToggleRepeatScript()
+          const result = await solNative.executeAppleScript(script)
+          solNative.showToast(result ? 'Repeat on' : 'Repeat off')
+        } catch (_) {
+          solNative.showToast('Failed toggling repeat')
+        }
       },
     },
     ...systemPreferenceItems,

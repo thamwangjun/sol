@@ -7,7 +7,7 @@ class SolNative extends NativeEventEmitter {
   getEvents: typeof global.__SolProxy.getEvents
   getApps: () => Promise<Array<{name: string; url: string}>>
   toggleDarkMode: () => void
-  executeAppleScript: (source: string) => void
+  executeAppleScript: (source: string) => Promise<boolean>
   getMediaInfo: () => Promise<
     | {
         title: string

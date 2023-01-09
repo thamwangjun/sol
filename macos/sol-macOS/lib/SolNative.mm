@@ -12,14 +12,14 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(install) {
   if (cxxBridge == nil) {
     return @false;
   }
-
+  
   auto jsiRuntime = (facebook::jsi::Runtime *)cxxBridge.runtime;
   if (jsiRuntime == nil) {
     return @false;
   }
   auto &runtime = *jsiRuntime;
   auto callInvoker = bridge.jsCallInvoker;
-
+  
   sol::install(runtime, callInvoker);
   return @true;
 }
@@ -30,7 +30,7 @@ RCT_EXTERN_METHOD(getApps: (RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(openFile : (NSString)path)
 RCT_EXTERN_METHOD(openWithFinder : (NSString)path)
 RCT_EXTERN_METHOD(toggleDarkMode)
-RCT_EXTERN_METHOD(executeAppleScript : (NSString)source)
+RCT_EXTERN_METHOD(executeAppleScript : (NSString)source resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(executeBashScript : (NSString)source
                   resolver: (RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
