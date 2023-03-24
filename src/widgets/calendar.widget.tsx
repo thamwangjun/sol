@@ -14,7 +14,6 @@ interface Props {
 export const CalendarWidget: FC<Props> = observer(() => {
   const store = useStore()
   const focused = store.ui.focusedWidget === Widget.CALENDAR
-  const events = store.calendar.groupedEvents
 
   useEffect(() => {
     if (focused) {
@@ -43,93 +42,33 @@ export const CalendarWidget: FC<Props> = observer(() => {
     return null
   }
 
-  const lStart = DateTime.fromISO(store.calendar.upcomingEvent.date)
+  let lStart = DateTime.fromISO(store.calendar.upcomingEvent.date)
+  let diff = Math.floor(lStart.diffNow().as('minutes'))
 
   return (
-    <View className="px-4 py-2 flex-row items-center">
-      {/* {groupedEvents.map(([key, data]) => {
-        return (
-          <View key={key} className="flex-row flex-1">
-            <View className="flex-1">
-              <View className="flex-row">
-                {key === 'today' || key === 'tomorrow' ? (
-                  <Text className="capitalize text-neutral-500 text-xs ml-1">
-                    {key}
-                  </Text>
-                ) : (
-                  <Text className="capitalize text-neutral-500 text-xs ml-1">
-                    {data.date.toFormat('cccc')}
-                  </Text>
-                )}
-              </View>
-              <ScrollView
-                className="max-h-49 mt-1"
-                showsVerticalScrollIndicator={false}>
-                {data.events.map((event, index) => {
-                  const lDate = DateTime.fromISO(event.date)
-                  // const lEndDate = event.endDate
-                  //   ? DateTime.fromISO(event.endDate)
-                  //   : null
-                  const storeIndex = store.calendar.filteredEvents.findIndex(
-                    e => e.id === event.id && e.date === event.date,
-                  )
-                  const highlighted =
-                    focused && store.ui.selectedIndex === storeIndex
-                  const isNow =
-                    !!store.calendar.upcomingEvent &&
-                    store.calendar.upcomingEvent.id === event.id
-
-                  return (
-                    <View
-                      key={index}
-                      className={clsx(
-                        `flex-row items-center py-1 px-1 rounded-r border-l-2 border-transparent`,
-                        {
-                          'bg-lightHighlight dark:bg-darkHighlight border-neutral-600 dark:border-white':
-                            highlighted,
-                          'p-0.5': event.isAllDay,
-                        },
-                      )}>
-                      {!event.isAllDay && (
-                        <View
-                          className="rounded-sm w-10"
-                          style={{
-                            backgroundColor: `${event.color}CC`,
-                          }}>
-                          <Text className="text-xs text-white text-center">
-                            {lDate.toFormat('HH:mm')}
-                          </Text>
-                        </View>
-                      )}
-                      <Text
-                        numberOfLines={1}
-                        className={clsx('text-xs flex-shrink ml-1', {
-                          'line-through': event.declined,
-                          'font-bold': isNow && !event.isAllDay,
-                        })}>
-                        {event.title}
-                      </Text>
-                    </View>
-                  )
-                })}
-              </ScrollView>
-            </View>
-          </View>
-        )
-      })} */}
+    <View className="px-4 py-2 flex-row items-center gap-1">
       <View
-        className="h-2 w-2 rounded-full"
+        className="h-1.5 w-1.5 rounded-full"
         style={{
-          backgroundColor: `${store.calendar.upcomingEvent.color}CC`,
+          backgroundColor: store.calendar.upcomingEvent.color,
         }}
       />
-      <Text className="ml-2 font-semibold text-sm">
-        {store.calendar.upcomingEvent.title}
+      <Text className="text-sm dark:text-neutral-400">Event</Text>
+      <Text className="font-semibold text-sm">
+        {store.calendar.upcomingEvent.title?.trim()}
       </Text>
-      <Text className="text-sm">{lStart.toRelative()}</Text>
+      {diff > 0 ? (
+        <>
+          <Text className="text-sm dark:text-neutral-400">in</Text>
+          <Text className="text-sm font-semibold">{diff}</Text>
+          <Text className="text-sm dark:text-neutral-400">minutes</Text>
+        </>
+      ) : (
+        <Text className="text-sm dark:text-neutral-400">has started</Text>
+      )}
       <View className="flex-1" />
       <Text className="text-sm font-semibold">Join</Text>
-      <Key title="Enter" className="ml-1" />
+      <Key title="⏎" primary className="w-8" />
     </View>
   )
 })

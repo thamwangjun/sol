@@ -176,7 +176,7 @@ export const createCalendarStore = (root: IRootStore) => {
         solNative.getCalendarAuthorizationStatus()
     },
     onStatusBarItemClick: () => {
-      const event = store.events[0]
+      const event = root.calendar.filteredEvents[0]
       if (event) {
         let eventLink: string | null | undefined = event.url
 
