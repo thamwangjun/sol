@@ -80,19 +80,17 @@ export const EmojisWidget: FC<Props> = observer(({style}) => {
 
   return (
     <View className="flex-1" style={style}>
-      <View className="my-4 px-4 justify-center">
-        <TextInput
-          autoFocus
-          // @ts-expect-error
-          enableFocusRing={false}
-          value={store.ui.query}
-          onChangeText={store.ui.setQuery}
-          placeholderTextColor={colors.neutral[500]}
-          placeholder="Search emojis..."
-          className="text-xl font-light"
-          selectionColor={solNative.accentColor}
-        />
-      </View>
+      <TextInput
+        autoFocus
+        // @ts-expect-error
+        enableFocusRing={false}
+        value={store.ui.query}
+        onChangeText={store.ui.setQuery}
+        placeholderTextColor={colors.neutral[500]}
+        placeholder="Search emojis..."
+        className="text-xl my-5 px-4"
+        selectionColor={solNative.accentColor}
+      />
       <LoadingBar />
       <StyledFlatList
         ref={listRef}

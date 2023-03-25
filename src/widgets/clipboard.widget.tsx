@@ -36,21 +36,19 @@ export const ClipboardWidget: FC<Props> = observer(({style}) => {
 
   return (
     <View className="flex-1 bg-light dark:bg-dark" style={style}>
-      <View className="my-5 px-4 flex-row items-center">
-        <TextInput
-          autoFocus
-          // @ts-expect-error
-          enableFocusRing={false}
-          value={store.ui.query}
-          onChangeText={store.ui.setQuery}
-          selectionColor={solNative.accentColor}
-          placeholderTextColor={tw.color(
-            'dark:text-neutral-400 text-neutral-500',
-          )}
-          className="text-xl flex-1 font-light"
-          placeholder="Search clipboard history..."
-        />
-      </View>
+      <TextInput
+        autoFocus
+        // @ts-expect-error
+        enableFocusRing={false}
+        value={store.ui.query}
+        onChangeText={store.ui.setQuery}
+        selectionColor={solNative.accentColor}
+        placeholderTextColor={tw.color(
+          'dark:text-neutral-400 text-neutral-500',
+        )}
+        className="text-xl my-5 px-4"
+        placeholder="Search clipboard history..."
+      />
       <LoadingBar />
       <StyledFlatList
         data={data}

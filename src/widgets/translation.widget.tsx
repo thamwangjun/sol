@@ -42,21 +42,19 @@ export const TranslationWidget: FC<Props> = observer(({style}) => {
 
   return (
     <View className="flex-1" style={style}>
-      <View className="my-5 px-4 flex-row items-center">
-        <TextInput
-          autoFocus
-          // @ts-expect-error
-          enableFocusRing={false}
-          value={store.ui.query}
-          onChangeText={store.ui.setQuery}
-          className="flex-1 text-xl font-light"
-          placeholderTextColor={
-            colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[400]
-          }
-          placeholder={'Enter text to translate...'}
-          selectionColor={colorScheme === 'dark' ? 'white' : 'black'}
-        />
-      </View>
+      <TextInput
+        autoFocus
+        // @ts-expect-error
+        enableFocusRing={false}
+        value={store.ui.query}
+        onChangeText={store.ui.setQuery}
+        className="text-xl my-5 px-4"
+        placeholderTextColor={
+          colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[400]
+        }
+        placeholder={'Enter text to translate...'}
+        selectionColor={colorScheme === 'dark' ? 'white' : 'black'}
+      />
 
       <LoadingBar />
 
