@@ -14,13 +14,19 @@ import {
   TextInput,
   useColorScheme,
   View,
+  ViewStyle,
 } from 'react-native'
 import {useStore} from 'store'
 import {ItemType, Widget} from 'stores/ui.store'
 import colors from 'tailwindcss/colors'
 import customColors from '../colors'
 
-export const SearchWidget: FC = observer(() => {
+type Props = {
+  style?: ViewStyle
+  className?: string
+}
+
+export const SearchWidget: FC<Props> = observer(({style}) => {
   const store = useStore()
   const colorScheme = useColorScheme()
   const focused = store.ui.focusedWidget === Widget.SEARCH
@@ -40,7 +46,7 @@ export const SearchWidget: FC = observer(() => {
   const items = store.ui.items
 
   const renderItem = ({item, index}: {item: Item; index: number}) => {
-    const isActive = index === store.ui.selectedIndex && focused
+    const isActive = index === store.ui.selectedIndex
 
     // this is used for things like calculator results
     if (item.type === ItemType.TEMPORARY_RESULT) {
@@ -151,35 +157,26 @@ export const SearchWidget: FC = observer(() => {
 
   return (
     <View
+      style={style}
       className={clsx({
         'flex-1': !!store.ui.query,
       })}>
-      <View className="my-5 px-4 flex-row items-center">
-        <TextInput
-          autoFocus
-          // @ts-expect-error
-          enableFocusRing={false}
-          value={store.ui.query}
-          onChangeText={store.ui.setQuery}
-          ref={inputRef}
-          className="flex-1 text-xl font-light"
-          placeholderTextColor={
-            colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[400]
-          }
-          placeholder={'Type a command or search...'}
-          selectionColor={solNative.accentColor}
-        />
-      </View>
+      <TextInput
+        autoFocus
+        // @ts-expect-error
+        enableFocusRing={false}
+        value={store.ui.query}
+        onChangeText={store.ui.setQuery}
+        ref={inputRef}
+        className="text-xl font-light my-5 px-4"
+        placeholderTextColor={
+          colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[400]
+        }
+        placeholder={'Type a command or search...'}
+        selectionColor={solNative.accentColor}
+      />
 
       <LoadingBar />
-
-      {!store.ui.query && !!store.ui.items.length && (
-        <View className="px-3 py-2">
-          {items.map((item, index) =>
-            renderItem({item: {...item, isFavorite: true}, index}),
-          )}
-        </View>
-      )}
 
       {!!store.ui.query && (
         <StyledFlatList

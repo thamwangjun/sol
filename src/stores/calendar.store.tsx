@@ -56,7 +56,7 @@ export const createCalendarStore = (root: IRootStore) => {
         const lNow = DateTime.now()
         return (
           +lStart.plus({minutes: 20}) >= +lNow &&
-          +lStart.diffNow('minutes').minutes <= 10
+          +lStart.diffNow('minutes').minutes <= 15
         )
       })
     },

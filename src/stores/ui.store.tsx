@@ -124,9 +124,7 @@ export const createUIStore = (root: IRootStore) => {
           parsedStore.windowManagementEnabled ?? true
         store.calendarEnabled = parsedStore.calendarEnabled ?? true
         store.showAllDayEvents = parsedStore.showAllDayEvents ?? true
-        store.showPlaying = parsedStore.showPlaying ?? true
         store.launchAtLogin = parsedStore.launchAtLogin ?? true
-        store.showHintBar = parsedStore.showHintBar ?? true
         store.useBackgroundOverlay = parsedStore.useBackgroundOverlay ?? true
         store.shouldHideMenubar = parsedStore.shouldHideMenuBar ?? false
         store.spotifyForwardingEnabled =
@@ -814,10 +812,6 @@ export const createUIStore = (root: IRootStore) => {
     translationResults: [] as string[],
     frequencies: {} as Record<string, number>,
     temporaryResult: null as string | null,
-    track: null as
-      | {title: string; artist: string; artwork: string; url: string}
-      | null
-      | undefined,
     projects: [] as ITrackingProject[],
     tempProjectName: '',
     currentlyTrackedProjectId: null as string | null,
@@ -836,9 +830,7 @@ export const createUIStore = (root: IRootStore) => {
     windowManagementEnabled: true,
     calendarEnabled: true,
     showAllDayEvents: true,
-    showPlaying: true,
     launchAtLogin: true,
-    showHintBar: true,
     useBackgroundOverlay: true,
     shouldHideMenubar: false,
     hasFullDiskAccess: false,
@@ -1351,14 +1343,6 @@ export const createUIStore = (root: IRootStore) => {
         store.getAccessibilityStatus()
       }
 
-      if (store.showPlaying) {
-        solNative.getMediaInfo().then(res => {
-          runInAction(() => {
-            store.track = res
-          })
-        })
-      }
-
       store.getFullDiskAccessStatus()
 
       solNative.getApps().then(apps => {
@@ -1421,18 +1405,9 @@ export const createUIStore = (root: IRootStore) => {
     setShowAllDayEvents: (v: boolean) => {
       store.showAllDayEvents = v
     },
-    setShowPlaying: (v: boolean) => {
-      store.showPlaying = v
-      if (!v) {
-        store.track = null
-      }
-    },
     setLaunchAtLogin: (v: boolean) => {
       store.launchAtLogin = v
       solNative.setLaunchAtLogin(v)
-    },
-    setShowHintBar: (v: boolean) => {
-      store.showHintBar = v
     },
     setUseBackgroundOverlay: (v: boolean) => {
       store.useBackgroundOverlay = v

@@ -13,6 +13,7 @@ import {useDeviceContext} from 'twrnc'
 
 interface Props {
   style?: ViewStyle
+  className?: string
 }
 
 export const USER_COLOR_PALETTE = [
@@ -66,7 +67,7 @@ export const CreateItemWidget: FC<Props> = observer(({style}) => {
   }
 
   return (
-    <View className="flex-1" style={tw.style(style)}>
+    <View className="flex-1" style={style}>
       <TouchableOpacity
         className="p-3 flex-row items-center"
         onPress={() => {

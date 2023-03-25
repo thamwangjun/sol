@@ -11,6 +11,7 @@ import {Widget} from 'stores/ui.store'
 
 interface Props {
   style?: ViewStyle
+  className?: string
 }
 
 const SHORTCUTS = [

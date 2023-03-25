@@ -11,7 +11,6 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
   ViewStyle,
 } from 'react-native'
@@ -20,6 +19,7 @@ import colors from 'tailwindcss/colors'
 
 interface Props {
   style?: ViewStyle
+  className?: string
 }
 
 const ROW_HEIGHT = 72
@@ -32,7 +32,6 @@ export const EmojisWidget: FC<Props> = observer(({style}) => {
   const storeRowIndex = Math.floor(selectedIndex / EMOJIS_PER_ROW)
   const storeSubIndex = selectedIndex % EMOJIS_PER_ROW
   const listRef = useRef<FlatList | null>(null)
-  const colorScheme = useColorScheme()
 
   useEffect(() => {
     solNative.turnOnHorizontalArrowsListeners()

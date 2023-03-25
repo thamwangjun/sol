@@ -282,34 +282,6 @@ export const SettingsWidget: FC = observer(() => {
               </View>
             </View>
 
-            <View
-              className={clsx(`flex-row items-center py-2`, {
-                'opacity-50': !store.ui.calendarEnabled,
-              })}>
-              <Text className="flex-1 text-right pr-3 text-sm">
-                Show all-day events
-              </Text>
-              <View className="flex-[1.3]">
-                <MySwitch
-                  disabled={!store.ui.calendarEnabled}
-                  value={store.ui.showAllDayEvents}
-                  onValueChange={store.ui.setShowAllDayEvents}
-                />
-              </View>
-            </View>
-
-            <View className="flex-row items-center py-2">
-              <Text className="flex-1 text-right pr-3 text-sm">
-                Show currently playing
-              </Text>
-              <View className="flex-[1.3]">
-                <MySwitch
-                  value={store.ui.showPlaying}
-                  onValueChange={store.ui.setShowPlaying}
-                />
-              </View>
-            </View>
-
             <View className="flex-row items-center py-2">
               <Text className="flex-1 text-right pr-3 text-sm">
                 Save clipboard history
@@ -318,18 +290,6 @@ export const SettingsWidget: FC = observer(() => {
                 <MySwitch
                   value={store.clipboard.saveHistory}
                   onValueChange={store.clipboard.setSaveHistory}
-                />
-              </View>
-            </View>
-
-            <View className="flex-row items-center py-2">
-              <Text className="flex-1 text-right pr-3 text-sm">
-                Show hint bar
-              </Text>
-              <View className="flex-[1.3]">
-                <MySwitch
-                  value={store.ui.showHintBar}
-                  onValueChange={store.ui.setShowHintBar}
                 />
               </View>
             </View>

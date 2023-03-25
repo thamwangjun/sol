@@ -21,6 +21,7 @@ import {useDeviceContext} from 'twrnc'
 
 interface Props {
   style?: StyleProp<ViewStyle>
+  className?: string
 }
 
 export const TranslationWidget: FC<Props> = observer(({style}) => {

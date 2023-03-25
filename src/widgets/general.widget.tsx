@@ -1,65 +1,14 @@
-import {Assets} from 'assets'
-import {FileIcon} from 'components/FileIcon'
 import {Key} from 'components/Key'
-import {useBoolean} from 'hooks'
 import {observer} from 'mobx-react-lite'
-import {styled} from 'nativewind'
 import React, {FC} from 'react'
-import {
-  Image,
-  Text,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-  ViewStyle,
-} from 'react-native'
+import {Text, View} from 'react-native'
 import {useStore} from 'store'
 import {ItemType, Widget} from 'stores/ui.store'
-import tw from 'tailwind'
 
-interface Props {
-  style?: ViewStyle
-}
-
-const StyledFileIcon = styled(FileIcon)
-
-export const GeneralWidget: FC<Props> = observer(({style}) => {
+export const GeneralWidget: FC = observer(() => {
   const store = useStore()
   return (
     <View className="flex-row items-center border-t border-lightBorder dark:border-darkBorder px-4 py-2 bg-lighter dark:bg-darker">
-      {!!store.ui.track?.title && (
-        <View className="flex-row items-center">
-          {!!store.ui.track?.artwork ? (
-            <Image
-              source={{uri: store.ui.track?.artwork}}
-              className="h-6 w-6 rounded-lg"
-            />
-          ) : (
-            <StyledFileIcon
-              url={store.ui.track?.url!}
-              className="h-6 w-6 rounded-lg"
-            />
-          )}
-
-          <View className="pl-2 flex-row items-center">
-            <Text className="text-xs max-w-52" numberOfLines={1}>
-              {store.ui.track?.title}
-            </Text>
-            {!!store.ui.track?.artist && (
-              <Text
-                className="dark:text-gray-400 text-gray-400 text-xs ml-1"
-                numberOfLines={1}>
-                {store.ui.track?.artist}
-              </Text>
-            )}
-          </View>
-        </View>
-      )}
-
-      {!!store.ui.track?.title && !!store.ui.currentTemp && (
-        <View className="border-l border-lightBorder dark:border-darkBorder h-full mx-4" />
-      )}
-
       {!!store.ui.currentTemp && (
         <View>
           <Text className="text-sm">{store.ui.currentTemp}°</Text>

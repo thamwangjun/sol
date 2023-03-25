@@ -16,6 +16,7 @@ import colors from 'tailwindcss/colors'
 
 interface Props {
   style?: ViewStyle
+  className?: string
 }
 
 interface WrappedInputProps extends TextInputProps {
