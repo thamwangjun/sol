@@ -168,7 +168,7 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
         value={store.ui.query}
         onChangeText={store.ui.setQuery}
         ref={inputRef}
-        className="text-xl my-5 px-4"
+        className="text-xl my-5 mx-4"
         placeholderTextColor={
           colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[300]
         }

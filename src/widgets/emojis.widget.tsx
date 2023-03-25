@@ -88,7 +88,7 @@ export const EmojisWidget: FC<Props> = observer(({style}) => {
         onChangeText={store.ui.setQuery}
         placeholderTextColor={colors.neutral[500]}
         placeholder="Search emojis..."
-        className="text-xl my-5 px-4"
+        className="text-xl my-5 mx-4"
         selectionColor={solNative.accentColor}
       />
       <LoadingBar />

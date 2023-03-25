@@ -46,7 +46,7 @@ export const ClipboardWidget: FC<Props> = observer(({style}) => {
         placeholderTextColor={tw.color(
           'dark:text-neutral-400 text-neutral-500',
         )}
-        className="text-xl my-5 px-4"
+        className="text-xl my-5 mx-4"
         placeholder="Search clipboard history..."
       />
       <LoadingBar />
