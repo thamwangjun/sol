@@ -20,8 +20,8 @@ module.exports = {
       colors: {
         accent: '#007AFF',
         accentBg: '#007AFF10',
-        light: {DEFAULT: 'rgba(251, 251, 251, .80)'},
-        lighter: {DEFAULT: 'rgba(251, 251, 251, .90)'},
+        light: {DEFAULT: 'rgba(255, 255, 255, .80)'},
+        lighter: {DEFAULT: 'rgba(255, 255, 255, .90)'},
         dark: {DEFAULT: 'rgba(21, 21, 21, .65)'},
         darker: {DEFAULT: 'rgba(21, 21, 21, .7)'},
         lightHighlight: {DEFAULT: 'rgba(0, 0, 0, .1)'},

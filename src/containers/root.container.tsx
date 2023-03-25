@@ -22,12 +22,6 @@ export let RootContainer = observer(() => {
   let [minizedHeight, setMinizedHeight] = useState(0)
 
   useEffect(() => {
-    return () => {
-      store.ui.cleanUp()
-    }
-  }, [])
-
-  useEffect(() => {
     if (!!store.ui.query) {
       solNative.setWindowHeight(500)
     } else {
@@ -74,8 +68,7 @@ export let RootContainer = observer(() => {
   return (
     <View
       className={clsx('bg-white dark:bg-dark', {
-        'h-[105]': !store.ui.query,
-        'h-[500]': !!store.ui.query,
+        'flex-1': !!store.ui.query,
       })}
       onLayout={e => {
         setMinizedHeight(e.nativeEvent.layout.height)

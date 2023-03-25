@@ -27,7 +27,7 @@ export const LoadingBar = observer(() => {
           outputRange: [
             colorScheme === 'dark'
               ? 'rgba(255, 255, 255, .1)'
-              : 'rgba(0, 0, 0, .1)',
+              : 'rgba(0, 0, 0, .06)',
             accentColor,
           ],
         }),

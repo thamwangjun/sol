@@ -67,11 +67,12 @@ export let CalendarWidget: FC = observer(() => {
           </Text>
         </Text>
       ) : (
-        <Text className="text-sm dark:text-neutral-400">has started</Text>
+        <Text className="text-sm text-neutral-500 dark:text-neutral-400">
+          has started
+        </Text>
       )}
       <View className="flex-1" />
-      <Text className="text-sm font-semibold">Join</Text>
-      <Key title="return" />
+      <Key title="Join ⏎" primary />
     </View>
   )
 })
