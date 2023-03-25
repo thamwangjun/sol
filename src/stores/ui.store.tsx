@@ -838,6 +838,7 @@ export const createUIStore = (root: IRootStore) => {
     braveBookmarks: [] as {title: string; url: string}[],
     chromeBookmarks: [] as {title: string; url: string}[],
     spotifyForwardingEnabled: true,
+    targetHeight: 64,
     //    _____                            _           _
     //   / ____|                          | |         | |
     //  | |     ___  _ __ ___  _ __  _   _| |_ ___  __| |
@@ -1479,6 +1480,9 @@ export const createUIStore = (root: IRootStore) => {
     setSpotifyForwardingEnabled: (enabled: boolean) => {
       store.spotifyForwardingEnabled = enabled
       solNative.setSpotifyForwardingEnabled(enabled)
+    },
+    setTargetHeight: (height: number) => {
+      store.targetHeight = height
     },
   })
 

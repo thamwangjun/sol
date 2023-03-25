@@ -255,8 +255,8 @@ export const createKeystrokeStore = (root: IRootStore) => {
               break
 
             default:
-              root.ui.setQuery('')
               root.ui.focusWidget(Widget.SEARCH)
+              root.ui.setQuery('')
               break
           }
           break

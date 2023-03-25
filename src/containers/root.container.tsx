@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import {solNative} from 'lib/SolNative'
 import {observer} from 'mobx-react-lite'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Linking, Text, TouchableOpacity, View} from 'react-native'
 import {useStore} from 'store'
 import {Widget} from 'stores/ui.store'
@@ -19,15 +19,14 @@ import {TranslationWidget} from 'widgets/translation.widget'
 export let RootContainer = observer(() => {
   let store = useStore()
   let widget = store.ui.focusedWidget
-  let [minizedHeight, setMinizedHeight] = useState(0)
 
   useEffect(() => {
     if (!!store.ui.query) {
       solNative.setWindowHeight(500)
     } else {
-      solNative.setWindowHeight(minizedHeight)
+      solNative.setWindowHeight(store.ui.targetHeight)
     }
-  }, [store.ui.query, minizedHeight])
+  }, [store.ui.query, store.ui.targetHeight])
 
   if (widget === Widget.CLIPBOARD) {
     return <ClipboardWidget className="bg-white dark:bg-dark" />
@@ -71,7 +70,7 @@ export let RootContainer = observer(() => {
         'flex-1': !!store.ui.query,
       })}
       onLayout={e => {
-        setMinizedHeight(e.nativeEvent.layout.height)
+        store.ui.setTargetHeight(e.nativeEvent.layout.height)
       }}>
       <SearchWidget />
 

@@ -57,8 +57,6 @@ const SettingsButton = () => {
 export const SettingsWidget: FC = observer(() => {
   const store = useStore()
   useFullSize()
-  const colorScheme = useColorScheme()
-
   const [selected, setSelected] = useState<ITEM>('GENERAL')
 
   return (
@@ -88,7 +86,7 @@ export const SettingsWidget: FC = observer(() => {
         />
       </View>
 
-      <View className="flex-1 bg-lighter dark:bg-darker">
+      <View className="flex-1 bg-white dark:bg-darker">
         {selected === 'ABOUT' && (
           <View className="flex-1 justify-center items-center">
             <Text className="text-4xl">Sol</Text>

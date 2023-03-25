@@ -1,7 +1,8 @@
-import {Assets} from 'assets'
+import clsx from 'clsx'
+import {solNative} from 'lib/SolNative'
 import React, {FC} from 'react'
-import {Image, TouchableOpacity, useColorScheme} from 'react-native'
-import tw from 'tailwind'
+import {TouchableOpacity, View} from 'react-native'
+import colors from 'tailwindcss/colors'
 
 interface Props {
   value: boolean
@@ -10,7 +11,6 @@ interface Props {
 }
 
 export const MySwitch: FC<Props> = ({value, onValueChange, disabled}) => {
-  const colorScheme = useColorScheme()
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -19,18 +19,19 @@ export const MySwitch: FC<Props> = ({value, onValueChange, disabled}) => {
       onPress={() => {
         onValueChange(!value)
       }}
-      style={tw.style(`w-3 h-3 rounded justify-center items-center border`, {
-        'border-neutral-500 dark:border-neutral-300': value,
-        'border-neutral-400 dark:border-neutral-600': !value,
-      })}>
-      {!!value && (
-        <Image
-          source={Assets.CheckIcon}
-          style={tw.style('h-3 w-3', {
-            tintColor: colorScheme === 'dark' ? 'white' : 'black',
-          })}
-        />
-      )}
+      className={clsx(`w-7 h-[17px] rounded-full`)}
+      style={{
+        backgroundColor: value ? solNative.accentColor : colors.neutral[400],
+      }}>
+      <View
+        className={clsx(
+          `w-[13px] h-[13px] rounded-full bg-white absolute top-[2px]`,
+          {
+            'right-[2px]': !!value,
+            'left-[2px]': !value,
+          },
+        )}
+      />
     </TouchableOpacity>
   )
 }
