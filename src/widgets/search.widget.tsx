@@ -74,6 +74,15 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
       )
     }
 
+    let tintColor: string | undefined
+    if (item.type !== ItemType.BOOKMARK) {
+      if (isActive) {
+        tintColor = 'black'
+      } else {
+        tintColor = colors.neutral[500]
+      }
+    }
+
     return (
       <View
         className={clsx('flex-row items-center')}
@@ -110,12 +119,7 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
               className="w-5 h-5"
               resizeMode="contain"
               style={{
-                tintColor:
-                  colorScheme === 'dark'
-                    ? undefined
-                    : isActive
-                    ? 'black'
-                    : colors.neutral[500],
+                tintColor,
               }}
             />
           )}
