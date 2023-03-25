@@ -1,7 +1,5 @@
 import clsx from 'clsx'
-import colors from '../colors'
 import {useBoolean} from 'hooks'
-import {solNative} from 'lib/SolNative'
 import React, {FC} from 'react'
 import {
   Text,
@@ -9,6 +7,7 @@ import {
   TouchableOpacityProps,
   ViewStyle,
 } from 'react-native'
+import colors from '../colors'
 
 interface SelectableButtonProps extends TouchableOpacityProps {
   selected: boolean
@@ -34,8 +33,6 @@ export const SelectableButton: FC<SelectableButtonProps> = ({
       className="px-2 py-3 w-full border-l-2"
       style={[
         {
-          // 'bg-lightHighlight dark:bg-darkHighlight border-accent': selected,
-          // 'bg-gray-200 dark:bg-darkBorder': !selected && hovered,
           borderLeftColor: selected ? colors.accent : 'transparent',
           backgroundColor: selected
             ? colors.accentBg
