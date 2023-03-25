@@ -72,7 +72,7 @@ export let CalendarWidget: FC = observer(() => {
         </Text>
       )}
       <View className="flex-1" />
-      <Key title="Join ⏎" primary />
+      <Key title="Join" symbol="⏎" primary />
     </View>
   )
 })
