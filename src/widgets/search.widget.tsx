@@ -74,15 +74,6 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
       )
     }
 
-    let tintColor: string | undefined
-    if (item.type !== ItemType.BOOKMARK) {
-      if (isActive) {
-        tintColor = 'black'
-      } else {
-        tintColor = colors.neutral[500]
-      }
-    }
-
     return (
       <View
         className={clsx('flex-row items-center')}
@@ -118,9 +109,6 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
               source={item.iconImage}
               className="w-5 h-5"
               resizeMode="contain"
-              style={{
-                tintColor,
-              }}
             />
           )}
           {/* Somehow this component breaks windows build */}
@@ -128,7 +116,12 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
             !!item.iconComponent && <item.iconComponent />}
           <Text
             numberOfLines={1}
-            className={'ml-3 text-sm text-black dark:text-white max-w-xl'}>
+            className={clsx(
+              'ml-3 text-sm text-black dark:text-neutral-300 max-w-xl',
+              {
+                'dark:text-white': isActive,
+              },
+            )}>
             {item.name}
           </Text>
 
