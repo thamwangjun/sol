@@ -169,7 +169,7 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
         placeholderTextColor={
           colorScheme === 'dark' ? colors.neutral[500] : colors.neutral[300]
         }
-        placeholder={'Type a command or search...'}
+        placeholder={'Search for commands and files...'}
         selectionColor={solNative.accentColor}
       />
 
