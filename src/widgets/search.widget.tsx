@@ -116,18 +116,15 @@ export const SearchWidget: FC<Props> = observer(({style}) => {
             !!item.iconComponent && <item.iconComponent />}
           <Text
             numberOfLines={1}
-            className={clsx(
-              'ml-3 text-sm text-black dark:text-neutral-300 max-w-xl',
-              {
-                'dark:text-white': isActive,
-              },
-            )}>
+            className={clsx('ml-3 text-black dark:text-neutral-300 max-w-xl', {
+              'dark:text-white': isActive,
+            })}>
             {item.name}
           </Text>
 
           <View className="flex-1" />
           {!!item.subName && (
-            <Text className="ml-3 text-sm text-neutral-500 dark:text-neutral-300">
+            <Text className="ml-3 text-neutral-500 dark:text-neutral-300">
               {item.subName}
             </Text>
           )}

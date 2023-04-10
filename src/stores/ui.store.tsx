@@ -31,7 +31,7 @@ import {
   Text,
   View,
 } from 'react-native'
-import {IRootStore} from 'Store'
+import {IRootStore} from 'store'
 import {v4 as uuidv4} from 'uuid'
 import {systemPreferenceItems} from './systemPreferences'
 
@@ -215,7 +215,7 @@ export const createUIStore = (root: IRootStore) => {
     },
     {
       iconImage: Assets.DarkModeIcon,
-      name: 'Dark mode',
+      name: 'Toogle OS theme',
       type: ItemType.CONFIGURATION,
       callback: () => {
         solNative.toggleDarkMode()

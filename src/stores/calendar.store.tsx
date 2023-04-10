@@ -5,7 +5,7 @@ import {sleep} from 'lib/various'
 import {DateTime} from 'luxon'
 import {autorun, makeAutoObservable, toJS} from 'mobx'
 import {EmitterSubscription, Linking} from 'react-native'
-import {IRootStore} from 'Store'
+import {IRootStore} from 'store'
 
 let onShowListener: EmitterSubscription | undefined
 let onStatusBarItemClickListener: EmitterSubscription | undefined
