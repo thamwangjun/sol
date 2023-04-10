@@ -216,6 +216,7 @@ export const createUIStore = (root: IRootStore) => {
     {
       iconImage: Assets.DarkModeIcon,
       name: 'Toogle OS theme',
+      alias: 'dark',
       type: ItemType.CONFIGURATION,
       callback: () => {
         solNative.toggleDarkMode()
@@ -533,6 +534,7 @@ export const createUIStore = (root: IRootStore) => {
     {
       iconComponent: () => <FileIcon url="/Applications" className="w-4 h-4" />,
       name: 'Applications',
+      alias: 'application',
       type: ItemType.CONFIGURATION,
       callback: () => {
         Linking.openURL('/Applications')

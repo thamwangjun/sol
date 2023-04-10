@@ -84,6 +84,7 @@ interface Item {
   preventClose?: boolean
   type: ItemType
   name: string
+  alias?: string
   subName?: string
   callback?: () => void
   metaCallback?: () => void
