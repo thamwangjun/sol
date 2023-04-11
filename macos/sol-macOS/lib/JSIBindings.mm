@@ -10,6 +10,7 @@
 #import <sol-Swift.h>
 #import "SentryHelper.h"
 #import "JSIUtils.h"
+#import "processes.h"
 
 namespace sol {
 
@@ -281,6 +282,11 @@ void install(jsi::Runtime &rt,
   auto userName = HOSTFN("userName", 0, []) {
     NSString *userName = NSUserName();
     return sol::NSStringToJsiValue(rt, userName);
+  });
+  
+  auto getProcesses = HOSTFN("getProcesses", 0, []) {
+//    NSArray *allProcesses = allProcesses();
+    return {};
   });
 
   jsi::Object module = jsi::Object(rt);

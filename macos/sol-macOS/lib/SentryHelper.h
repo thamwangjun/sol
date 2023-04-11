@@ -1,10 +1,3 @@
-//
-//  SentryHelper.h
-//  macOS
-//
-//  Created by Oscar on 05.11.22.
-//
-
 #ifndef SentryHelper_h
 #define SentryHelper_h
 

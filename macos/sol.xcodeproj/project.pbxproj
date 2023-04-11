@@ -48,6 +48,7 @@
 		70E80B63294C719C0094F1B5 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E80B62294C719C0094F1B5 /* CGImage.swift */; };
 		70EA99EA2794967E008E54FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EA99E92794967E008E54FD /* AppDelegate.swift */; };
 		70EFF77428D5F732009FE998 /* DoNotDisturb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFF77328D5F732009FE998 /* DoNotDisturb.swift */; };
+		70FEADF529E496BC008B5F36 /* processes.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70FEADF429E496BC008B5F36 /* processes.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,8 @@
 		70EA99E82794967E008E54FD /* sol-macOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sol-macOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		70EA99E92794967E008E54FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70EFF77328D5F732009FE998 /* DoNotDisturb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoNotDisturb.swift; sourceTree = "<group>"; };
+		70FEADF429E496BC008B5F36 /* processes.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = processes.mm; sourceTree = "<group>"; };
+		70FEADF629E496D1008B5F36 /* processes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = processes.h; sourceTree = "<group>"; };
 		9D32DFD059D5DB6DDEF38881 /* Pods-Shared-sol-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-sol-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Shared-sol-iOS/Pods-Shared-sol-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A82DFB63B157C65E5D698CA2 /* Pods-Shared-sol-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-sol-iOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-sol-iOS/Pods-Shared-sol-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CE0E74F571E1F48FF00A8324 /* Pods-Shared-sol-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-sol-macOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-sol-macOS/Pods-Shared-sol-macOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				70E15D0B293290F7007FFE5F /* JSIUtils.h */,
 				70E80B5B294C699E0094F1B5 /* NotchHelper.swift */,
 				7008230C296A9D5800E8978A /* BookmarkHelper.swift */,
+				70FEADF429E496BC008B5F36 /* processes.mm */,
+				70FEADF629E496D1008B5F36 /* processes.h */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -319,7 +324,7 @@
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			packageReferences = (
-				70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin.git" */,
+				70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
@@ -491,6 +496,7 @@
 				70B78361279BE866008660F5 /* Panel.swift in Sources */,
 				7034504028238AAB00240BDD /* ScreenDetector.swift in Sources */,
 				70B9275F2930A4F700F883A0 /* ShellHelper.swift in Sources */,
+				70FEADF529E496BC008B5F36 /* processes.mm in Sources */,
 				70911D4E28BB22620005FD0E /* JSIBindings.mm in Sources */,
 				70969E1727966ECD00BE3F1C /* SolNative.swift in Sources */,
 				70E80B5C294C699E0094F1B5 /* NotchHelper.swift in Sources */,
@@ -756,7 +762,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin.git" */ = {
+		70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:sindresorhus/LaunchAtLogin.git";
 			requirement = {
@@ -769,7 +775,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		70ADD54528B22C1300AAAFD7 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin.git" */;
+			package = 70ADD54428B22C1300AAAFD7 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
